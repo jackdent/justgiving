@@ -1,6 +1,6 @@
 # JustGiving
 
-TODO: Write a gem description
+A Ruby REST client for the JustGiving API
 
 ## Installation
 
