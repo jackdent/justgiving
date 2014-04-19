@@ -1,4 +1,4 @@
-# Justgiving
+# JustGiving
 
 TODO: Write a gem description
 
@@ -18,11 +18,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Require the justgiving gem
+
+    require 'justgiving'
+
+Create a new API client instance, passing your api key to the new method. For example,
+
+    client = JustGiving::Search.new({YOUR_API_KEY})
+
+Available clients are: Charity, Country, Currency, Donation, Search. You can then call methods on your client, for example
+
+    client.searchCharities({q: 'Macmillan'})
+
+To view the available methods for each client, browse the /lib/justgiving directory.
+
+Create a new client
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/justgiving/fork )
+1. Fork it ( https://github.com/jackdent/justgiving/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
