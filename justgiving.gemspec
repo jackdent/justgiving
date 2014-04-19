@@ -5,7 +5,7 @@ require 'justgiving/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "justgiving"
-  spec.version       = Justgiving::VERSION
+  spec.version       = JustGiving::VERSION
   spec.authors       = ["Jack Dent"]
   spec.email         = ["jack@jackdent.co.uk"]
   spec.summary       = %q{A Ruby REST client for the JustGiving API}
@@ -21,4 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "curb"
+  spec.add_development_dependency "json"
+  spec.add_development_dependency "addressable"
 end
