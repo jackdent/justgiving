@@ -8,28 +8,26 @@ module JustGiving
     def initialize(token)
       @token = token
       @base_url = "https://api.justgiving.com/#{@token}/v1/"
+      @connection_defaults = {
+          url: @base_url,
+          headers: {
+            'User-Agent' => 'Ruby REST client',
+            'Content-Type' => 'application/json'
+          }
+        }
     end
 
     protected
 
       def get(path, query_hash=nil)
-        if not @conn
-          defaults = {
-            url: @base_url,
-            headers: {
-              'User-Agent' => 'Ruby REST client',
-              'Content-Type' => 'application/json'
-            }
-          }
-          connection = Faraday.new(defaults) do |connection|
-            connection.response :json, :content_type => /\bjson$/
-            connection.response :logger
-            connection.adapter  Faraday.default_adapter
-          end
+        @connection ||= Faraday.new(@connection_defaults) do |connection|
+          connection.response :json, :content_type => /\bjson$/
+          connection.response :logger
+          connection.adapter  Faraday.default_adapter
         end
 
         path += '?' + query_string_from_hash(query_hash) if query_hash
-        response = connection.get path
+        response = @connection.get path
         response.body
       end
 
