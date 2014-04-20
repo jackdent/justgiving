@@ -3,6 +3,7 @@ module JustGiving
 
     class BadRequest < StandardError; end
     class NoResults < StandardError; end
+    class InternalServerError < StandardError; end
 
     class RaiseError < Faraday::Response::Middleware
    
