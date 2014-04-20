@@ -28,7 +28,7 @@ Create a new API client instance, passing your api key to the new method. For ex
 
 Available clients are: Charity, Country, Currency, Donation, Search. You can then call methods on your client, for example
 
-    client.searchCharities({q: 'Macmillan'})
+    client.search_charities({q: 'Macmillan'})
 
 To view the available methods for each client, browse the /lib/justgiving directory.
 
