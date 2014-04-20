@@ -3,7 +3,7 @@ require_relative "client"
 module JustGiving
   class Currency < Client
 
-    def getValidCountryCodes
+    def get_valid_country_codes
       get("fundraising/currencies")
     end
 

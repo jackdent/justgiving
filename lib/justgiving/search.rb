@@ -3,23 +3,23 @@ require_relative "client"
 module JustGiving
   class Search < Client
 
-    def searchCharities(filters = {})
+    def search_charities(filters = {})
       get("charity/search", filters)
     end
 
-    def searchEvents(filters = {})
+    def search_events(filters = {})
       get("event/search", filters)
     end
 
-    def searchFundraisers(filters = {})
+    def search_fundraisers(filters = {})
       get("fundraising/search", filters)
     end
 
-    def searchCommemorations(filters = {})
+    def search_commemorations(filters = {})
       get("remember/search", filters)
     end
 
-    def searchTeams(filters = {})
+    def search_teams(filters = {})
       get("team/search", filters)
     end
 

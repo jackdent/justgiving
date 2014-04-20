@@ -3,19 +3,19 @@ require_relative "client"
 module JustGiving
   class Charity < Client
 
-    def getByCharityId(id)
+    def get_by_charity_id(id)
       get("charity/#{id}")
     end
 
-    def getEventsByCharityId(id)
+    def get_events_by_charity_id(id)
       get("charity/#{id}/events")
     end
 
-    def getDonationsByCharityId(id)
+    def get_donations_by_charity_id(id)
       get("charity/#{id}/donations")
     end
 
-    def getCharityCategories
+    def get_charity_categories
       get("charity/categories")
     end
 

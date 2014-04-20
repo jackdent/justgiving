@@ -3,11 +3,11 @@ require_relative "client"
 module JustGiving
   class Donation < Client
 
-    def getDetailsByDonationId(id)
+    def get_details_by_donation_id(id)
       get("donation/#{id}")
     end
 
-    def getStatusByDonationId(id)
+    def get_status_by_donation_id(id)
       get("donation/#{id}/status")
     end
 

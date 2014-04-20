@@ -3,7 +3,7 @@ require_relative "client"
 module JustGiving
   class Country < Client
 
-    def getCountries
+    def get_countries
       get("countries")
     end
 
