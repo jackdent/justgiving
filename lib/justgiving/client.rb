@@ -1,6 +1,7 @@
 require "faraday"
 require "faraday_middleware"
 require "addressable/uri"
+require_relative "error"
 
 module JustGiving
   class Client
@@ -23,7 +24,8 @@ module JustGiving
         @connection ||= Faraday.new(@connection_defaults) do |connection|
           connection.response :json, :content_type => /\bjson$/
           connection.response :logger
-          connection.adapter  Faraday.default_adapter
+          connection.adapter   Faraday.default_adapter
+          connection.use       Error::RaiseError
         end
 
         path += '?' + query_string_from_hash(query_hash) if query_hash
