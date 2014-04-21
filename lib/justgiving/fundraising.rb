@@ -3,9 +3,15 @@ require_relative "client"
 module JustGiving
   class Fundraising < Client
 
+    def check_if_page_exists_by_name(name)
+      head("fundraising/pages/#{name}")
+    end
+
+    def suggest_page_short_names(preferred)
+      get("fundraising/pages/suggest", {'preferredName' => preferred})
+    end
+
     # Todo:
-    # FundraisingPageUrlCheck
-    # SuggestPageShortNames
     # RegisterFundraisingPage
     # GetFundraisingPageDetails
     # GetFundraisingPages

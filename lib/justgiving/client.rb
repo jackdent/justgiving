@@ -44,5 +44,12 @@ module JustGiving
         response.body
       end
 
+      def head(path)
+        response = @connection.head do |request|
+          request.url path
+        end
+        true # We expect Error::NoResults to be thrown if the query is unsuccessful
+      end
+
   end
 end

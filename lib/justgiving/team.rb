@@ -7,9 +7,9 @@ module JustGiving
       get("team/#{name}")
     end
 
-    # def check_if_team_exists_with_name(name)
-    #   head("team/#{name}")
-    # end
+    def check_if_team_exists_by_name(name)
+      head("team/#{name}")
+    end
 
     # Todo:
     # CreateOrUpdateTeam
