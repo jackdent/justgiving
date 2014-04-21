@@ -1,6 +1,7 @@
 require "faraday"
 require "faraday_middleware"
 require_relative "error"
+require_relative "logger"
 
 module JustGiving
   class Client
@@ -16,13 +17,13 @@ module JustGiving
         }
       }
       @connection = Faraday.new(@connection_defaults) do |connection|
-        connection.request :json
+        connection.request  :json
 
         connection.response :json, :content_type => /\bjson$/
-        connection.response :logger
 
-        connection.use       Error::RaiseError
-        connection.adapter   Faraday.default_adapter
+        connection.use      Error::RaiseError
+        connection.use      Logger
+        connection.adapter  Faraday.default_adapter
       end
     end
 
