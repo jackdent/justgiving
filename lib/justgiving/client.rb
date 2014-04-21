@@ -16,10 +16,13 @@ module JustGiving
         }
       }
       @connection = Faraday.new(@connection_defaults) do |connection|
+        connection.request :json
+
         connection.response :json, :content_type => /\bjson$/
         connection.response :logger
-        connection.adapter   Faraday.default_adapter
+
         connection.use       Error::RaiseError
+        connection.adapter   Faraday.default_adapter
       end
     end
 
@@ -28,7 +31,15 @@ module JustGiving
       def get(path, query=nil)
         response = @connection.get do |request|
           request.url path
-          request.params.merge! query if query
+          request.params.merge! query unless query.nil?
+        end
+        response.body
+      end
+
+      def post(path, payload=nil)
+        response = @connection.post do |request|
+          request.url path
+          request.body = payload unless payload.nil?
         end
         response.body
       end

@@ -7,6 +7,10 @@ module JustGiving
       get("charity/search", filters)
     end
 
+    def search_commemorations(filters = {})
+      get("remember/search", filters)
+    end
+
     def search_events(filters = {})
       get("event/search", filters)
     end
@@ -15,8 +19,8 @@ module JustGiving
       get("fundraising/search", filters)
     end
 
-    def search_commemorations(filters = {})
-      get("remember/search", filters)
+    def search_projects(filters = {})
+      get("project", filters)
     end
 
     def search_teams(filters = {})
