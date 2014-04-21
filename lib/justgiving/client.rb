@@ -45,6 +45,14 @@ module JustGiving
         response.body
       end
 
+      def put(path, payload=nil)
+        response = @connection.put do |request|
+          request.url path
+          request.body = payload unless payload.nil?
+        end
+        response.body
+      end
+
       def head(path)
         response = @connection.head do |request|
           request.url path
