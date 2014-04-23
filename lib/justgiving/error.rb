@@ -1,9 +1,13 @@
 module JustGiving
   module Error
 
-    class BadRequest < StandardError; end
-    class NoResults < StandardError; end
-    class InternalServerError < StandardError; end
+    class ConfigurationError < StandardError; end
+    class InvalidEnvironment < ConfigurationError; end
+
+    class RequestError < StandardError; end
+    class BadRequest < RequestError; end
+    class NoResults < RequestError; end
+    class InternalServerError < RequestError; end
 
     class RaiseError < Faraday::Response::Middleware
    

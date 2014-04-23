@@ -6,9 +6,20 @@ require_relative "logger"
 module JustGiving
   class Client
 
-    def initialize(token)
+    def initialize(token, environment=nil)
+      if environment.nil? || environment == :production
+        environment = :production
+        @base_url = "https://api.justgiving.com/#{@token}/v1/"
+      elsif environment == :staging
+        @base_url = "https://api-staging.justgiving.com/#{@token}/v1/"
+      elsif environment == :sandbox
+        @base_url = "https://api-sandbox.justgiving.com/#{@token}/v1/"
+      else
+        raise Error::InvalidEnvironment
+      end
+
       @token = token
-      @base_url = "https://api.justgiving.com/#{@token}/v1/"
+      @environment = environment
       @connection_defaults = {
         url: @base_url,
         headers: {
@@ -16,6 +27,7 @@ module JustGiving
           'Content-Type' => 'application/json'
         }
       }
+
       @connection = Faraday.new(@connection_defaults) do |connection|
         connection.request  :json
 
